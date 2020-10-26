@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use Illuminate\Http\Request;
@@ -47,7 +48,15 @@ class AuthController extends Controller
         $request->merge(['password' => bcrypt($request->password)]);
         $client = Client::create($request->all());
         $client->api_token = Str::random(60);
+
         $client->save();
+
+        // Add id
+        $client->governorates()->attach($request->city_id);
+        $client->bloodTypes()->attach($request->blood_type_id);
+
+        
+        
 
         return responseJson(1, 'success', [
             'api_token' => $client->api_token,
@@ -189,7 +198,7 @@ class AuthController extends Controller
     }
 
 
-    public function profile(Request $request)
+    public function editProfile(Request $request)
     {
         $validatorData = validator()->make($request->all(),[
 
@@ -218,22 +227,19 @@ class AuthController extends Controller
         $loginUser->save();
 
 
-        if($request->has('governorate_id'))
+        if($request->has('city_id'))
         {
-            $loginUser->cities()->detach($request->city_id);
-            $loginUser->cities()->attach($request->city_id);
+            $loginUser->governorates()->sync($request->city_id);
         }
 
-        if($request->has('blood_type'))
+        if($request->has('blood_type_id'))
         {
-            $bloodType = BloodType::where('name', $request->blood_type)->first();
-            $loginUser->bloodType()->detach($bloodType->id);
-            $loginUser->bloodType()->attach($bloodType->id);
+            $loginUser->bloodTypes()->sync($request->blood_type_id);
         }
 
 
         $data = [
-            'user' => $request->user()->fresh()->load('carModel', 'photos', 'trustIcons')
+            'user' => $request->user()->fresh()
         ];
 
         return responseJson(1,'تم تحديث البيانات بنجاح ',$data);

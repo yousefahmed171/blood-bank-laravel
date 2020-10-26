@@ -17,7 +17,7 @@ use App\Models\Token;
 class MainController extends Controller
 {
 
-    // create
+    // create contact
     public function contact(Request $request)
     {
         $validatorData = validator()->make($request->all(),[
@@ -47,29 +47,36 @@ class MainController extends Controller
 
     }
 
-    
+    //get settings
     public function settings()
     {
         $settings =  Setting::all(); 
         return responseJson(1, 'success', $settings);
-
     }
 
+    //create posts
     public function posts()
     {
         $posts =  Post::with('category')->paginate(10); //paginate(10) //get mean all 
         return responseJson(1, 'success', $posts);
-
     }
 
+    //get posts
+    public function post($id)
+    {
+        $post =  Post::findOrFail($id);
 
+        return responseJson(1, 'success', $post);
+    } 
+
+    //get governorates
     public function governorates()
     {
         $governorates =  Governorate::all(); //paginate(10)
         return responseJson(1, 'success', $governorates);
-
     }
 
+    //if condation city
     public function cities(Request $request)
     {
         //$cities =  City::all(); //paginate(10)
@@ -87,6 +94,7 @@ class MainController extends Controller
 
     }
 
+    // send my Favourites
     public function postFavourites(Request $request)
     {
         $validatorData = validator()->make($request->all(),[
@@ -106,6 +114,7 @@ class MainController extends Controller
 
     }
     
+    //Get Favourites 
     public function myFavourites(Request $request)
     {
 
@@ -171,17 +180,17 @@ class MainController extends Controller
 
         
             // get tokens for FCM (push notification using Firebase cloud ) 
-            $tokens = Token::whereIn('client_id', $clientsIds)->where('token', '!=', null)->pluk('token')->toArray();
-            if(count($tokens))
-            {
-                $title  = $notification->title;
-                $body   = $notification->content; 
-                $data   = [
-                    'donation_request_id'  => $donationRequest->id
-                ];
+            // $tokens = Token::whereIn('client_id', $clientsIds)->where('token', '!=', null)->pluk('token')->toArray();
+            // if(count($tokens))
+            // {
+            //     $title  = $notification->title;
+            //     $body   = $notification->content; 
+            //     $data   = [
+            //         'donation_request_id'  => $donationRequest->id
+            //     ];
 
-                //$send = notifyByFirebase($title, $body, $tokens, $data);
-            }
+            //     //$send = notifyByFirebase($title, $body, $tokens, $data);
+            // }
 
         }
         //return responseJson(1, 'تم الاضافة بنجاح ', $send);

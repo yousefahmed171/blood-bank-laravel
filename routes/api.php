@@ -38,14 +38,15 @@ Route::group(['prefix' => 'v1' , 'namespace' => 'Api'],  function () {
 
     
     Route::group(['middleware' => 'auth:api'], function(){
+
         //Auth 
-        Route::post('profile', 'AuthController@profile');
+        Route::post('edit-profile', 'AuthController@editProfile');
         Route::post('register-token', 'AuthController@registerToken');
         Route::post('remove-token', 'AuthController@removeToken');
 
-
         //Main
         Route::get('posts', 'MainController@posts');
+        Route::get('post/{id}', 'MainController@post');
         Route::post('contact', 'MainController@contact');
         Route::post('post-favourites', 'MainController@postFavourites');
         Route::get('my-favourites', 'MainController@myFavourites');
