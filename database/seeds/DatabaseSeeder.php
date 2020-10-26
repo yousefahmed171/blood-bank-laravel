@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             BloodTypeSeeder::class,
             CategorySeeder::class,
             PostSeeder::class,
-            SettingSeeder::class
+            SettingSeeder::class,
+            ClientSedder::class
         ]);
          
     }

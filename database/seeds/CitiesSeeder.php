@@ -12,44 +12,29 @@ class CitiesSeeder extends Seeder
     public function run()
     {
         DB::table('cities')->insert([
+            'id' => 1,
+            'name' => "العاشر من رمضان ",
+            'governorate_id' => 1,
+        ]);
+        DB::table('cities')->insert([
+            'id' => 2,
+            'name' => "مدينة نصر ",
+            'governorate_id' => 2,
+        ]);
+        DB::table('cities')->insert([
             'id' => 3,
-            'name' => "Al Minufiyah",
-            'governorate_id' => 4,
+            'name' => "المنصورة",
+            'governorate_id' => 3,
         ]);
         DB::table('cities')->insert([
             'id' => 4,
-            'name' =>"Al Qahirah",
-            'governorate_id' => 8,
+            'name' => "العبور",
+            'governorate_id' => 4,
         ]);
         DB::table('cities')->insert([
             'id' => 5,
-            'name' =>"Al Qalyubiyah",
-            'governorate_id' => 10,
-        ]);
-        DB::table('cities')->insert([
-            'id' => 6,
-            'name' => "Al Sharqiyah",
-            'governorate_id' => 20,
-        ]);
-        DB::table('cities')->insert([
-            'id' => 7,
-            'name' => "Al Daqahliyah",
-            'governorate_id' => 21,
-        ]);
-        DB::table('cities')->insert([
-            'id' => 8,
-            'name' => "Bur Sa`id",
-            'governorate_id' => 23,
-        ]);
-        DB::table('cities')->insert([
-            'id' => 9,
-            'name' => "Dumyat",
-            'governorate_id' => 25,
-        ]);
-        DB::table('cities')->insert([
-            'id' => 10,
-            'name' => "Matruh",
-            'governorate_id' => 6,
+            'name' => "قويسنا",
+            'governorate_id' => 5,
         ]);
 
   

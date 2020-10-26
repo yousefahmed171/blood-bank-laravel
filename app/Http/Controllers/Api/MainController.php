@@ -161,7 +161,7 @@ class MainController extends Controller
             //create a notifications on databases
             $notification = $donationRequest->notifications()->create([
                 'title'           =>  'يوجد حالة تبرع قريبه منك ',
-                'content'         =>  $donationRequest->blood_type_id . 'محتاج فصيلة دم ', //
+                'content'         =>  $donationRequest->blood_type_id . 'محتاج فصيلة دم ', 
             ]);
 
             //return responseJson(1, 'success',$notification);
@@ -169,7 +169,7 @@ class MainController extends Controller
 
             $notification->clients()->attach($clientsIds);
 
-
+        
             // get tokens for FCM (push notification using Firebase cloud ) 
             $tokens = Token::whereIn('client_id', $clientsIds)->where('token', '!=', null)->pluk('token')->toArray();
             if(count($tokens))
@@ -177,14 +177,14 @@ class MainController extends Controller
                 $title  = $notification->title;
                 $body   = $notification->content; 
                 $data   = [
-                    'donation_requests_id'  => $donationRequest->id
+                    'donation_request_id'  => $donationRequest->id
                 ];
 
                 //$send = notifyByFirebase($title, $body, $tokens, $data);
             }
 
         }
-        //eturn responseJson(1, 'تم الاضافة بنجاح ', $send);
+        //return responseJson(1, 'تم الاضافة بنجاح ', $send);
         
     }
 
