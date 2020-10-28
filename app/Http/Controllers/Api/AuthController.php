@@ -134,7 +134,7 @@ class AuthController extends Controller
                 //Send Email 
 
                 Mail::to($user->email)
-                    ->bcc("yousefahmed.171@gmail.com")
+                    ->bcc("yousefahmed171@gmail.com")
                     ->send(new ResetPassword($user));
 
                 return responseJson(1, 'رقم الهاتف صحيح  ', 

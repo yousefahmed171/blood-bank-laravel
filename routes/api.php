@@ -47,11 +47,16 @@ Route::group(['prefix' => 'v1' , 'namespace' => 'Api'],  function () {
         //Main
         Route::get('posts', 'MainController@posts');
         Route::get('post/{id}', 'MainController@post');
+        Route::get('get-blood-types', 'MainController@getBloodTypes');
         Route::post('contact', 'MainController@contact');
         Route::post('post-favourites', 'MainController@postFavourites');
         Route::get('my-favourites', 'MainController@myFavourites');
         Route::post('donation_request/create', 'MainController@donationRequestCreate');
         Route::get('donation_request', 'MainController@donationRequest');
+        Route::get('get_notifications', 'MainController@getNotifications');
+        Route::put('update_notifications', 'MainController@updateNotifications');//update
+
+        
 
     });
     

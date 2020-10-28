@@ -10,6 +10,8 @@ use App\Models\Post;
 use App\Models\Contact;
 use App\Models\Setting;
 use App\Models\DonationRequest;
+use App\Models\Notification;
+use App\Models\BloodType;
 use App\Models\Token;
 
 
@@ -52,6 +54,20 @@ class MainController extends Controller
     {
         $settings =  Setting::all(); 
         return responseJson(1, 'success', $settings);
+    }
+
+    //get Notifications
+    public function getNotifications()
+    {
+        $notifications =  Notification::with('clients')->get(); 
+        return responseJson(1, 'success', $notifications);
+    }
+
+    //get BloodTypes
+    public function getBloodTypes()
+    {
+        $getBloodTypes =  BloodType::all(); 
+        return responseJson(1, 'success', $getBloodTypes);
     }
 
     //create posts
@@ -163,9 +179,7 @@ class MainController extends Controller
 
         //return responseJson(1, 'success',$clientsIds);
 
-        //dd($clientsIds);
-
-        if(count($clientsIds))
+        if((count($clientsIds)))
         {
             //create a notifications on databases
             $notification = $donationRequest->notifications()->create([
@@ -178,8 +192,9 @@ class MainController extends Controller
 
             $notification->clients()->attach($clientsIds);
 
-        
-            // get tokens for FCM (push notification using Firebase cloud ) 
+            return responseJson(1, 'تم الاضافة بنجاح ', $notification);
+
+            // // get tokens for FCM (push notification using Firebase cloud ) 
             // $tokens = Token::whereIn('client_id', $clientsIds)->where('token', '!=', null)->pluk('token')->toArray();
             // if(count($tokens))
             // {
@@ -196,10 +211,10 @@ class MainController extends Controller
         //return responseJson(1, 'تم الاضافة بنجاح ', $send);
         
     }
-
+    //get Donation Request
     public function donationRequest(Request $request)
     {
-        $donationRequests = DonationRequest::paginate(10); //all
+        $donationRequests = DonationRequest::all(); //all
         
         return responseJson(1, 'success', $donationRequests);
     }
