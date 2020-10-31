@@ -13,10 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('home');
+// });
+
 Route::get('/', function () {
-    return view('home');
+    if(Auth::check())
+        return redirect('/home');
+    else
+        return view('auth/login');
+});
+
+
+Route::group(['middelware' => ['auth']], function(){
+    
+    //home
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::resource('governorate', 'GovernorateController');
+    Route::resource('post', 'PostController');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
