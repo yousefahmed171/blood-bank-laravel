@@ -178,13 +178,12 @@ class MainController extends Controller
         })->pluck('clients.id')->toArray();
 
         //return responseJson(1, 'success',$clientsIds);
-
         if((count($clientsIds)))
         {
             //create a notifications on databases
             $notification = $donationRequest->notifications()->create([
                 'title'           =>  'يوجد حالة تبرع قريبه منك ',
-                'content'         =>  $donationRequest->blood_type_id . 'محتاج فصيلة دم ', 
+                'content'         =>  $donationRequest->bloodType->name . 'محتاج فصيلة دم ', 
             ]);
 
             //return responseJson(1, 'success',$notification);

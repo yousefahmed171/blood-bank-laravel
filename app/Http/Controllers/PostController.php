@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with('category')->get();
-        return view('posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -29,7 +29,7 @@ class PostController extends Controller
         //
         $category = Category::pluck('name', 'id');
 
-        return view('posts.create', compact('category_id', 'category'));
+        return view('admin.posts.create', compact('category_id', 'category'));
     }
 
     /**
@@ -72,7 +72,7 @@ class PostController extends Controller
         $post->category_id  = $request->get('category_id');
         $post->save();
         flash('Success create New Post')->success();
-        return redirect('post'); //return back();
+        return redirect('admin/post'); //return back();
 
 
     }
@@ -105,7 +105,7 @@ class PostController extends Controller
         }
 
         //dd($model);
-        return view('posts.edit', compact('model','categoriesArray'));
+        return view('admin.posts.edit', compact('model','categoriesArray'));
     }
 
     /**
@@ -139,7 +139,7 @@ class PostController extends Controller
 
 
         flash('Success Update Post')->success();
-        return redirect('post'); //return back();
+        return redirect('admin/post'); //return back();
 
 
     }
@@ -155,7 +155,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->delete();
         flash('Success Delete Post')->success();
-        return redirect('post'); //return back();
+        return redirect('admin/post'); //return back();
 
     }
 }

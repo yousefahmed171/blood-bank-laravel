@@ -1,0 +1,292 @@
+                /*--------------------------------public settings--------------------------------------*/
+
+/*upper-bar*/
+.upper-bar .info, .upper-bar .accounts{
+    justify-content: flex-end;
+}
+
+/*navbar*/
+.nav-bar .navbar .navbar-brand{
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+.nav-bar .navbar .navbar-nav{
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.nav-bar .navbar ul li{
+    margin-left: 0;
+    margin-right: 2px;
+}
+
+.nav-bar .navbar ul li a{
+    border-left: none;
+    border-right: 1px solid #f0f0f0;
+}
+
+.nav-bar .donate{
+    padding-right: 0;
+    padding-left: 30px;
+}
+
+.nav-bar .donate p{
+    font-size: 18px;
+}
+
+.nav-bar .donate img{
+    right: auto;
+    left: 5px;
+}
+
+
+/*footer*/
+.footer .other .social .icons a{
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+.footer .pages .list-group{
+    font-size: 18px;
+}
+
+.footer .stores p,
+.footer .other .rights p{
+    font-size: 18px;
+}
+
+.upper-bar .accounts .create-new,
+.upper-bar .accounts .signin{
+    font-weight: 600;
+}
+
+.upper-bar .accounts .create-new{
+    margin: 0;
+}
+
+.upper-bar .accounts .signin{
+    
+    margin-left: 30px;
+}
+
+
+/*breadcrumb*/
+.path .breadcrumb{
+    font-size: 18px;
+}
+
+/*media*/
+@media (max-width: 500px){
+    /*navbar*/
+    .nav-bar .donate {
+        margin-right: 0;
+        margin-left: 20px;
+    }
+    
+    /*breadcrumb*/
+    .path .breadcrumb {
+        padding: 20px;
+    }
+    
+}
+
+
+
+                    /*--------------------------------home page--------------------------------------*/
+
+/*intro*/
+.intro .carousel .carousel-inner .carousel-1{
+    background-image: url(../../images/front/header1-ltr.jpg);
+    background-position: right;
+}
+
+.intro .carousel .carousel-inner .carousel-2{
+    background-image: url(../../images/front/header1-ltr.jpg);
+    background-position: right;
+}
+
+.intro .carousel .carousel-inner .carousel-3{
+    background-image: url(../../images/front/header1-ltr.jpg);
+    background-position: right;
+}
+
+/*media*/
+@media (max-width: 500px){
+    /*----------intro----------*/
+    .intro .carousel .carousel-inner .carousel-1{
+        background-image: url(../../images/front/BG1.jpg);
+    }
+
+    .intro .carousel .carousel-inner .carousel-2{
+        background-image: url(../../images/front/BG1.jpg);
+    }
+
+    .intro .carousel .carousel-inner .carousel-3{
+        background-image: url(../../images/front/BG1.jpg);
+    }
+}
+
+
+/*about*/
+.about {
+    background-image: url(../../images/front/about2-ltr.png);
+}
+
+/*media*/
+@media (max-width: 500px){
+    .about{
+        background-image: url(../../images/front/about3.jpg);
+    }
+    
+    .about span{
+        color: #a70f14;
+    }
+    
+    .about p{
+        color: #FFF;
+        font-weight: 600;
+    }
+}
+
+
+/*articles*/
+.articles .head-text{
+    padding-left: 0;
+    padding-right: 30px;
+}
+
+.articles .view .articles-carousel .owl-nav{
+    right: 0;
+    left: auto;
+}
+
+.articles .view .articles-carousel .card .favourite i{
+    left: auto;
+    right: 6px;
+}
+
+.articles .view .articles-carousel .card .card-body p{
+    font-size: 18px;
+}
+
+
+/*requests*/
+.requests .head-text{
+    width: 250px;
+}
+
+.requests .content .filter  .form-group .inside-select .form-control{
+    padding: 0;
+    padding-left: 25px;
+}
+
+.requests .content .filter .form-group .inside-select i{
+    left: auto;
+    right: 25px;
+    border-right: none;
+    padding-right: 0;
+    border-left: 1px solid #eaeaea;
+    padding-left: 20px;
+}
+
+.requests .content .patients .details{
+    padding: 8px;
+    padding-left: none;
+    padding-right: 40px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+.requests .content .patients .details ul{
+    margin-right: auto;
+    margin-left: 70px;
+    font-weight: 600;
+}
+
+/*media*/
+@media (max-width: 500px){
+    .requests .content .patients .details{
+        padding: 10px;
+        padding-bottom: 40px;
+        display: inline-block;
+        border-top-right-radius: 200px;
+        border-top-left-radius: 200px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    
+    .requests .content .patients .details ul{
+        margin-left: 10px;
+    }
+}
+
+
+/*contact*/
+.contact{
+    background-image: url(../../images/front/call-ltr.jpg);
+    background-position: right;
+}
+
+/*media*/
+@media(max-width: 500px){
+    .contact {
+    background-image: url(../../images/front/BG1.jpg);
+    }
+    
+    .contact .whatsapp{
+        display: flex;
+        margin: 50px 0;
+        width: 80%;
+        align-items: center;
+    }
+}
+
+@media (max-width:500px){
+    .contact .whatsapp {
+        display: flex;
+        margin: 50px 70px;
+        width: 80%;
+        align-items: center;
+    }
+}
+
+
+
+                /*--------------------------------create account page--------------------------------------*/
+
+.create .form .account-form form .create-btn a{
+    font-weight: 600;
+}
+
+
+
+                /*--------------------------------signin account page--------------------------------------*/
+
+.signin-account .form .signin-form form .options .forgot img{
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.signin-account .form .signin-form form .options .remember .form-check .form-check-label{
+    margin-right: 0;
+    margin-left: 25px;
+}
+
+
+
+                /*--------------------------------article details page--------------------------------------*/
+
+.article-details .inside-article .text{
+    font-weight: 600;
+}
+
+
+
+                /*--------------------------------who are us page--------------------------------------*/
+
+.who-are-us .about-us .details .text p{
+    font-weight: 600;
+}

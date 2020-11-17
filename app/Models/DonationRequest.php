@@ -18,7 +18,7 @@ class DonationRequest extends Model
 
     public function bloodType()
     {
-        return $this->belongsTo('App\Models\BloodTybe');
+        return $this->belongsTo('App\Models\BloodType');
     }
 
     public function city()

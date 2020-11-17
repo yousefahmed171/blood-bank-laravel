@@ -17,7 +17,7 @@ class GovernorateController extends Controller
         //
         $records = Governorate::paginate(20);
 
-        return view('governorates.index', compact('records'));
+        return view('admin.governorates.index', compact('records'));
     }
 
     /**
@@ -28,7 +28,7 @@ class GovernorateController extends Controller
     public function create()
     {
         //
-        return view('governorates.create');
+        return view('admin.governorates.create');
     }
 
     /**
@@ -50,7 +50,7 @@ class GovernorateController extends Controller
         // $record->save();
         $record = Governorate::create($request->all());
         flash('Success create New Governorate')->success();
-        return redirect('governorate'); //return back();
+        return redirect('admin/governorate'); //return back();
     }
 
     /**
@@ -74,7 +74,7 @@ class GovernorateController extends Controller
     {
         $model = Governorate::findOrFail($id);
 
-        return view('governorates.edit', compact('model'));
+        return view('admin.governorates.edit', compact('model'));
     }
 
     /**
@@ -90,7 +90,7 @@ class GovernorateController extends Controller
         $record = Governorate::findOrFail($id);
         $record->update($request->all());
         flash('Success Update Governorate')->success();
-        return redirect('governorate'); //return back();
+        return redirect('admin/governorate'); //return back();
     }
 
     /**
@@ -105,6 +105,6 @@ class GovernorateController extends Controller
         $record = Governorate::findOrFail($id);
         $record->delete();
         flash('Success Delete Governorate')->success();
-        return redirect('governorate'); //return back();
+        return redirect('admin/governorate'); //return back();
     }
 }

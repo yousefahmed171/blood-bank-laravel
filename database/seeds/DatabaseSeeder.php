@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            
             GovernorateSeeder::class,
             CitiesSeeder::class,
             BloodTypeSeeder::class,
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             SettingSeeder::class,
             ClientSedder::class
+            
         ]);
          
     }

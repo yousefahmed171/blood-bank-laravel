@@ -5,12 +5,26 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use LaratrustUserTrait;
+    
+    protected $table = 'users';
 
+    // public function roles()
+    // {
+    //     return $this->belongsToMany('App\Models\Role');
+    // }
+
+    public function getUserTypeAttribute()
+    {
+        return $this->roles()->pluck('id')->toArray();
+    }
     /**
+     * 
      * The attributes that are mass assignable.
      *
      * @var array
