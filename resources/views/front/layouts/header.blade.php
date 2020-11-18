@@ -9,20 +9,20 @@
         <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css" integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If" crossorigin="anonymous">
         <!--google fonts css-->
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-        
+
         <!--font awesome css-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
         <link rel="icon" href="{{asset('images/front/Icon.png')}}">
-        
+
         <!--owl-carousel css-->
         <link rel="stylesheet" href="{{asset('front/css/owl.carousel.min.css')}}">
         <link rel="stylesheet" href="{{asset('front/css/owl.theme.default.min.css')}}">
-        
+
         <!--style css-->
         <link rel="stylesheet" href="{{asset('front/css/style.css')}}">
         <!--style css ltr-->
         {{-- <link rel="stylesheet" href="{{asset('front/css/style-ltr.css')}}"> --}}
-        
+
         <title>Blood Bank</title>
     </head>
     <body>
@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- not a member-->
                             <div class="col-md-4">
                                 <div class="info" dir="ltr">
@@ -60,13 +60,15 @@
                                         <p>{{$settings->email}}</p>
                                     </div>
                                 </div>
-                                @if (auth()->guard('client'))
+                                @if (Auth::guard('client')->check())
                                 <div class="member">
                                     <p class="welcome">مرحباً بك</p>
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                          <div class="member">
-                                            {{auth()->guard('client')->user()->name}}        
+                                             
+                                                {{auth()->guard('client')->user()->name}}
+                                            
                                             <i class="fas fa-chevron-down"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -94,28 +96,24 @@
                                                 <i class="fas fa-phone-alt"></i>
                                                 تواصل معنا
                                             </a>
-                                            <a class="dropdown-item" href="{{url('logout')}}">
+                                            <a class="dropdown-item" href="{{url('user/logout')}}">
                                                 <i class="fas fa-sign-out-alt"></i>
                                                 تسجيل الخروج
                                             </a>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
-        
-                                @else
-                                    
-                                <P></P>
-                                    
+
                                 @endif
-                         
-                                
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                
+
+
                 <!--nav-->
                 <div class="nav-bar">
                     <nav class="navbar navbar-expand-lg navbar-light">
@@ -147,23 +145,23 @@
                                         <a class="nav-link" href="{{url('contact')}}">اتصل بنا</a>
                                     </li>
                                 </ul>
-                                
+
                                 <!--not a member-->
-                                @if(!auth()->guard('client'))
+                                @if(!Auth::guard('client')->check())
                                 <div class="accounts">
-                                    <a href="{{url('reg')}}" class="create">إنشاء حساب جديد</a>
-                                    <a href="{{url('log')}}" class="signin">الدخول</a>
+                                    <a href="{{url('user/register')}}" class="create">إنشاء حساب جديد</a>
+                                    <a href="{{url('user/login')}}" class="signin">الدخول</a>
                                 </div>
                                 @endif
 
-                                
-                                @if(auth()->guard('client'))
+
+                                @if(Auth::guard('client')->check())
                                 <a href="{{url('donation-request-create')}}" class="donate">
                                     <img src="images/front/transfusion.svg">
                                     <p>طلب تبرع</p>
                                 </a>
                                 @endif
-                                
+
                             </div>
                         </div>
                     </nav>

@@ -8,13 +8,13 @@ class Client extends Authenticatable
 {
 
     protected $table = 'clients';
+
+    protected $guard = 'client';
+
     public $timestamps = true;
+    
     protected $fillable = array('name', 'email', 'phone', 'password', 'brith_date', 'last_donation_date', 'city_id', 'blood_type_id', 'pin_code', 'active');
 
-    // public function bloodType()
-    // {
-    //     return $this->belongsTo('App\Models\BloodType');
-    // }
 
     public function contacts()
     {
@@ -57,7 +57,7 @@ class Client extends Authenticatable
     }
 
     protected $hidden = [
-        'password', 'api_token',
+        'password', 'api_token', 'remember_token',
     ];
 
 

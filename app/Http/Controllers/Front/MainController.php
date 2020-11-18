@@ -17,8 +17,8 @@ class MainController extends Controller
     ////{{url(route("toggle-favourite"))}}
     public function home(Request $request)
     {
-        $client = Client::first();
-        auth('client')->login($client);
+        // $client = Client::first();
+        // auth('client')->login($client);
         //dd($request->all());
         $posts = Post::take(9)->get();
         $donations = DonationRequest::take(4)->get();

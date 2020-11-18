@@ -16,7 +16,7 @@
             <div class="signin-form">
                 
                     <div class="logo">
-                        <img src="images/front/logo.png">
+                        <img src="/images/front/logo.png">
                     </div>
                     {!! Form::model($model,[
                         'action'  => 'Front\AuthController@doLogin',
@@ -45,7 +45,7 @@
                             <button  class="btn btn-primary" type="submit">دخول</button>
                         </div>
                         <div class="col-md-6 left">
-                            <button  class="btn btn-primary" type="submit">انشاء حساب جديد</button>
+                            <a  href="{{url('user/register')}}" class="btn btn-primary" >انشاء حساب جديد</a>
                         </div>
                     </div>
                     {!! Form::close() !!}

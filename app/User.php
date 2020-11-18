@@ -14,6 +14,8 @@ class User extends Authenticatable
     
     protected $table = 'users';
 
+    protected $guard = 'admin';
+
     // public function roles()
     // {
     //     return $this->belongsToMany('App\Models\Role');

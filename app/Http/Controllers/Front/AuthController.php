@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Governorate;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -32,34 +33,43 @@ class AuthController extends Controller
             'phone'         => 'required',
             'password'      => 'required',
         ]);
+
+
+        //$rememberme = request('rememberme') == 1 ? true: false;
+        if(Auth::guard('client')->attempt(['phone'=>request('phone'), 'password'=>request('password')])) {
+          return   redirect('/');
+        } else {
+            session()->flash('error', ('admin errors'));
+            return redirect('user/login');
+        }
   
         //$auth =  auth()->guard('client')->validate($request->all());
         //return responseJson(1, '', $auth);
 
-        $client = Client::where('phone', $request->phone)->first();
+        // $client = Client::where('phone', $request->phone)->first();
         
-        if($client)
-        {
-            if(Hash::check($request->password, $client->password))
-            {
-                session()->flash('success', 'تم تسجيل الدخول بنجاح ');
-                return redirect('/');
-            }else 
-            {
-                session()->flash('error', 'لم يتم  تسجيل الدخول بنجاح');
-                return redirect('log');
-            }
-        }
-        else 
-        {
-            session()->flash('error', 'لم يتم  تسجيل الدخول بنجاح');
+        // if($client)
+        // {
+        //     if(Hash::check($request->password, $client->password))
+        //     {
+        //         session()->flash('success', 'تم تسجيل الدخول بنجاح ');
+        //         return redirect('/');
+        //     }else 
+        //     {
+        //         session()->flash('error', 'لم يتم  تسجيل الدخول بنجاح');
+        //         return redirect('user/login');
+        //     }
+        // }
+        // else 
+        // {
+        //     session()->flash('error', 'لم يتم  تسجيل الدخول بنجاح');
 
-            return redirect('logn');
-        }
+        //     return redirect('user/login');
+        // }
     }
 
     public function logout(){
         auth()->guard('client')->logout();
-        return redirect('/'); 
+        return redirect('user/login'); 
     }
 }
