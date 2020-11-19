@@ -18,7 +18,8 @@
                         'action'        => 'Front\AuthController@doRegister',
                         'method'        => 'post'
                     ]) !!}
-
+                        @include('admin.partials.validate_errors')
+                        
                         <label for="name">الإسم   </label>
                         {!! Form::text('name', null,[
                             'class'           => 'form-control',
@@ -31,19 +32,19 @@
                             'placeholder'       => 'البريد الإلكترونى  '
                         ])!!}
 
-                        <label for="data">تاريخ الميلاد   </label>
+                        <label for="brith_date">تاريخ الميلاد   </label>
                         {!! Form::date('brith_date', null,[
                             'class'           => 'form-control',
                             'placeholder'     => 'تاريخ الميلاد '
                         ])!!}
 
-                        <label for="data">فصيلة الدم   </label>
+                        <label for="blood_type_id">فصيلة الدم   </label>
                         {!! Form::select('blood_type_id', $bloodtypes, null, [
                             'class'         => 'form-control',
                             'placeholder'   => 'فصيلة الدم'
                         ])!!}
 
-                        <label for="data">إختر المحافظة   </label>
+                        <label for="governorate_id">إختر المحافظة   </label>
                         {!! Form::select('governorate_id', $governorates, null, [
                             'class'         => 'form-control',
                             'id'            => 'governorates',
@@ -63,8 +64,8 @@
                             'placeholder'       => 'الجول '
                         ])!!}
 
-                        <label for="data">تاريخ آخر  تبرع   </label>
-                        {!! Form::date('brith_date', null,[
+                        <label for="last_donation_date">تاريخ آخر  تبرع   </label>
+                        {!! Form::date('last_donation_date', null,[
                             'class'             => 'form-control',
                             'id'                => 'date',
                             'placeholder'       => 'تاريخ الميلاد ',
@@ -85,7 +86,7 @@
 
                         <br>
                             <div class="create-btn">
-                                <button class="btn btn-success"> إنشاء حساب  </button>
+                                <button class="btn btn-success" type="submit"> إنشاء حساب  </button>
                             </div>
                         <br>
 
@@ -106,21 +107,23 @@
                 {
                     $.ajax({
                         url : '{{url('api/v1/cities?governorate_id=')}}'+governorate_id,
-                        type: 'get',
+                        type: 'GET',
                         success: function (data) {
-                            if(data.status == 1)
+                     
+                            if(data.status != 0)
                             {
                                 $("#cities").empty();
-                                $.each(data.data, function(index, city){
-                                    $("#cities").append($('<option>').val(city.id).text(city.name));
-                                });//'<option value="'+city.id+'">'+city.name+'</option>'
-                                //console.log(data);
+                                $("#cities").append('<option>إختر المدينة </option>');
+                                $.each(data.data, function(index, value){
+                                    $("#cities").append('<option value="'+value.id+'">'+value.name+'</option>');
+                                });
+                            } else {
+                                $("#cities").empty();
                             }
                         },
                         error : function(jqxhr, textStatus, errorMessage) {
                             alert(errorMessage);
                         }
-
                     });
                 } else {
 

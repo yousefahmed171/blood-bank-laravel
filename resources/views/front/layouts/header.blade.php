@@ -62,14 +62,15 @@
                                 </div>
                                 @if (Auth::guard('client')->check())
                                 <div class="member">
-                                    <p class="welcome">مرحباً بك</p>
+                                    <p class="welcome"> مرحباً بك </p>
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                          <div class="member">
-                                             
-                                                {{auth()->guard('client')->user()->name}}
-                                            
-                                            <i class="fas fa-chevron-down"></i>
+
+                                            {{auth()->guard('client')->user()->name}}
+
+                                            <i class="fas fa-chevron-down"> </i>
+
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="{{url('/')}}">

@@ -19,15 +19,15 @@ class MainController extends Controller
     {
         // $client = Client::first();
         // auth('client')->login($client);
-        //dd($request->all());
+        //search
+        $result= DonationRequest::Filter($request);
+
         $posts = Post::take(9)->get();
         $donations = DonationRequest::take(4)->get();
         $bloodtypes = BloodType::all();
         $cities = City::all();
-        return view('front.home', compact('posts', 'donations', 'bloodtypes', 'cities'));
+        return view('front.home', compact('posts', 'donations', 'bloodtypes', 'cities', 'result'));
     }
-
-
 
     public function about()
     {
@@ -53,8 +53,6 @@ class MainController extends Controller
         return redirect('/');
 
     }
-
-
 
     public function post($id)
     {

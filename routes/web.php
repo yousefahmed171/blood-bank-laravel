@@ -14,18 +14,19 @@ use Illuminate\Support\Facades\Route;
     // Front
     Route::group([ 'namespace' => 'Front'], function(){ 
         // MainController
-        Route::get('/', 'MainController@home');
+        Route::any('/', 'MainController@home');
         Route::get('donation-requests', 'MainController@donationRequests');
         Route::get('donation-request/{id}', 'MainController@donationRequest');
         Route::get('donation-request-create', 'MainController@donationRequestCreate');
         Route::get('post/{id}', 'MainController@post');
         Route::get('contact', 'MainController@contact');
         Route::get('about', 'MainController@about');
+        Route::post('search','MainController@search');
         // AuthController
         Route::get('user/register', 'AuthController@register');
+        Route::post('user/register', 'AuthController@doRegister');
         Route::get('user/login', 'AuthController@login');
         Route::post('user/login', 'AuthController@doLogin');
-        Route::post('user/register', 'AuthController@doRegister');
         Route::any('user/logout', 'AuthController@logout');
         // Middleware Auth
         Route::group(['middleware' => 'front:client'], function(){ 

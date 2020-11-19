@@ -79,11 +79,22 @@
 
                                      </a> --}}
 
-                                     <button id="{{$post->id}}" 
+                                    {{-- <button class="btn " id="{{$post->id}}" onClick="toggleFavourite(this)"> 
+                                        <i class="fa fa-heart" {{$post->is_favourite ? 'second-heart' : 'first-heart'}} 
+                                            style="
+                                                margin-right: 91%;
+                                                font-size: 27px;
+                                                color: #090808;
+                                                outline-color: #020202;
+                                            "></i>
+                                    </button> --}}
+                                     
+
+                                     {{-- <button id="{{$post->id}}" 
                                         onClick="toggleFavourite(this)" 
                                         class="btn btn-lg favourite">
                                         <i class="fas fa-heart" ></i>
-                                    </button>
+                                    </button> --}}
 
                                     <div class="photo">
                                         <img src="{{asset('images/posts/'.$post->img)}}" class="card-img-top" alt="{{$post->title}}">
@@ -115,14 +126,15 @@
             </div>
             <div class="content">
                 <div class="container">
-                    <form class="row filter">
+                <form class="row filter" action="{{url('/')}}" method="POST">
+                    @csrf
                         <div class="col-md-5 blood">
                             <div class="form-group">
                                 <div class="inside-select">
-                                    <select class="form-control" id="exampleFormControlSelect1">
+                                    <select class="form-control" id="bloodtype" name="bloodtype">
                                         <option selected disabled>اختر فصيلة الدم</option>
                                         @foreach ($bloodtypes as $bloodtype)
-                                            <option>{{$bloodtype->name}}</option>
+                                            <option value="{{$bloodtype->id}}">{{$bloodtype->name}}</option>
                                         @endforeach
  
                                     </select>
@@ -133,10 +145,10 @@
                         <div class="col-md-5 city">
                             <div class="form-group">
                                 <div class="inside-select">
-                                    <select class="form-control" id="exampleFormControlSelect1">
+                                    <select class="form-control" id="city" name="city">
                                         <option selected disabled>اختر المدينة</option>
                                         @foreach ($cities as $city)
-                                            <option>{{$city->name}}</option>
+                                            <option value="{{$city->id}}">{{$city->name}}</option>
                                         @endforeach
                                     </select>
                                     <i class="fas fa-chevron-down"></i>
@@ -150,8 +162,26 @@
                         </div>
                     </form>
                     <div class="patients">
-                        @foreach ($donations as $donation)
+                        @if($result->count() > 0)
+                            @foreach ($result as $donation)
+                                <div class="details">
+                                    <div class="blood-type">
+                                        <h2 dir="ltr">{{$donation->bloodtype->name}}</h2>
+                                    </div>
+                                    <ul>
+                                        <li><span>اسم الحالة:</span> {{$donation->name}}</li>
+                                        <li><span>مستشفى:</span> {{$donation->hospital_address}}</li>
+                                        <li><span>المدينة:</span> {{$donation->city->name}}  {{$donation->governorate}}</li>
+                                    </ul>
+                                    <a href="{{url('donation-request/'.$donation->id)}}">التفاصيل</a>
+                                </div>
+                            @endforeach
+                        @else
+                            
+                            @foreach ($donations as $donation)
+                            <p>No data</p>
                             <div class="details">
+                                
                                 <div class="blood-type">
                                     <h2 dir="ltr">{{$donation->bloodtype->name}}</h2>
                                 </div>
@@ -162,7 +192,9 @@
                                 </ul>
                                 <a href="{{url('donation-request/'.$donation->id)}}">التفاصيل</a>
                             </div>
-                        @endforeach
+                            @endforeach
+                        @endif
+                       
                         
                     </div>
                     <div class="more">
@@ -224,8 +256,45 @@
         
 
 @push('script')
+
     
         <script>
+
+
+            // $("#bloodtype", "#city").change(function(e){
+            //     e.preventDefault();
+
+            //     var bloodtype = $("#bloodtype").val();
+            //     var city = $("#city").val();
+            //     if(bloodtype || city)
+            //     {
+            //         $.ajax({
+            //             url : '{{url('api/v1/cities?governorate_id=')}}'+governorate_id,
+            //             type: 'GET',
+            //             success: function (data) {
+                     
+            //                 if(data.status != 0)
+            //                 {
+            //                     $("#cities").empty();
+            //                     $("#cities").append('<option>إختر المدينة </option>');
+            //                     $.each(data.data, function(index, value){
+            //                         $("#cities").append('<option value="'+value.id+'">'+value.name+'</option>');
+            //                     });
+            //                 } else {
+            //                     $("#cities").empty();
+            //                 }
+            //             },
+            //             error : function(jqxhr, textStatus, errorMessage) {
+            //                 alert(errorMessage);
+            //             }
+            //         });
+            //     } else {
+
+            //     }
+            // });
+
+
+
             function toggleFavourite(heart) { 
                 var post_id = heart.id;
                 $.ajax({
