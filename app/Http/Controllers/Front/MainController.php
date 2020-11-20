@@ -17,8 +17,7 @@ class MainController extends Controller
     ////{{url(route("toggle-favourite"))}}
     public function home(Request $request)
     {
-        // $client = Client::first();
-        // auth('client')->login($client);
+
         //search
         $result= DonationRequest::Filter($request);
 
@@ -114,13 +113,14 @@ class MainController extends Controller
     }
 
 
-    public function donationRequests()
+    public function donationRequests(Request $request)
     {
-        $donations = DonationRequest::paginate(3);
+        $donations = DonationRequest::paginate(5);
+        $result= DonationRequest::Filter($request);
         $bloodtypes = BloodType::all();
         $cities = City::all();
 
-        return view('front.donation_requests', compact('donations', 'bloodtypes', 'cities'));
+        return view('front.donation_requests', compact('donations', 'bloodtypes', 'cities', 'result'));
     }
 
     public function donationRequest($id)
@@ -132,8 +132,9 @@ class MainController extends Controller
 
     public function toggleFavourite(Request $request)
     {
-        $toggle = $request->user('client-web')->posts()->toggle($request->post_id); 
-        return responseJson(1, 'success', $toggle);
+        $toggle = $request->user('client')->posts()->toggle($request->post_id);  //
+        return responseJson(1, 'success');
+        //return redirect('about');
     }
 
 

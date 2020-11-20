@@ -15,9 +15,8 @@ use Illuminate\Support\Facades\Route;
     Route::group([ 'namespace' => 'Front'], function(){ 
         // MainController
         Route::any('/', 'MainController@home');
-        Route::get('donation-requests', 'MainController@donationRequests');
+        Route::any('donation-requests', 'MainController@donationRequests');
         Route::get('donation-request/{id}', 'MainController@donationRequest');
-        Route::get('donation-request-create', 'MainController@donationRequestCreate');
         Route::get('post/{id}', 'MainController@post');
         Route::get('contact', 'MainController@contact');
         Route::get('about', 'MainController@about');
@@ -30,9 +29,10 @@ use Illuminate\Support\Facades\Route;
         Route::any('user/logout', 'AuthController@logout');
         // Middleware Auth
         Route::group(['middleware' => 'front:client'], function(){ 
-            Route::post('toggle-favourite', 'MainController@toggleFavourite');
+            Route::any('toggle-favourite', 'MainController@toggleFavourite')->name('toggle-favourite');
             Route::post('donation-request-store', 'MainController@donationRequestStore');
             Route::post('contact-send', 'MainController@contactSend');
+            Route::get('donation-request-create', 'MainController@donationRequestCreate');
         });
     });
 

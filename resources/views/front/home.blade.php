@@ -17,32 +17,10 @@
                                 <p>
                                     {{$settings->about_app}} 
                                 </p>
-                                {{-- <a href="#">المزيد</a> --}}
+                                <a href="{{url('about')}}">المزيد</a>
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="carousel-item carousel-2">
-                        <div class="container info">
-                            <div class="col-md-5">
-                                <h3>بنك الدم نمضى قدما لصحة أفضل</h3>
-                                <p>
-                                    {{$settings->about_app}}
-                                </p>
-                                <a href="#">المزيد</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item carousel-3">
-                        <div class="container info">
-                            <div class="col-md-5">
-                                <h3>بنك الدم نمضى قدما لصحة أفضل</h3>
-                                <p>
-                                    {{$settings->about_app}}
-                                </p>
-                                <a href="#">المزيد</a>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -74,34 +52,19 @@
                             @foreach ($posts as $post)
                                 <div class="card">
                                        
-                                     {{-- <a  class="favourite" >
-                                        <i id="{{$post->id}}" onclick="toggleFavourite(this)" class="far fa-heart {{$post->is_favourite ? 'second-heart' : 'first-heart'}} "></i>
-
-                                     </a> --}}
-
-                                    {{-- <button class="btn " id="{{$post->id}}" onClick="toggleFavourite(this)"> 
-                                        <i class="fa fa-heart" {{$post->is_favourite ? 'second-heart' : 'first-heart'}} 
-                                            style="
-                                                margin-right: 91%;
-                                                font-size: 27px;
-                                                color: #090808;
-                                                outline-color: #020202;
-                                            "></i>
-                                    </button> --}}
-                                     
-
-                                     {{-- <button id="{{$post->id}}" 
-                                        onClick="toggleFavourite(this)" 
-                                        class="btn btn-lg favourite">
-                                        <i class="fas fa-heart" ></i>
-                                    </button> --}}
-
+                                <a class="favourite"  id="{{$post->id}}" onclick="toggleFavourite(this)" {{$post->is_favourite ? 'second-heart' : 'first-heart'}}  >
+                                    <i 
+                                        
+                                        
+                                         
+                                        class="fa fa-heart">
+                                    </i> 
+                                </a>
+                                    
                                     <div class="photo">
                                         <img src="{{asset('images/posts/'.$post->img)}}" class="card-img-top" alt="{{$post->title}}">
                                         <a href="{{url('post/'.$post->id)}}" class="click">المزيد</a>
                                     </div>
-
-                                       
 
                                     <div class="card-body">
                                         <h5 class="card-title">{{$post->title}}</h5>
@@ -163,6 +126,9 @@
                     </form>
                     <div class="patients">
                         @if($result->count() > 0)
+                            <div class="alert alert-success" role="alert">
+                                عدد التبرعات  هي  ( {{$result->count()}} )                            
+                            </div>
                             @foreach ($result as $donation)
                                 <div class="details">
                                     <div class="blood-type">
@@ -177,9 +143,10 @@
                                 </div>
                             @endforeach
                         @else
-                            
+                            <div class="alert alert-danger" role="alert">
+                                 نأسف لايوجد تبرعات لصيغه البحث حاول مرة آخرى 
+                            </div>
                             @foreach ($donations as $donation)
-                            <p>No data</p>
                             <div class="details">
                                 
                                 <div class="blood-type">
@@ -260,58 +227,23 @@
     
         <script>
 
-
-            // $("#bloodtype", "#city").change(function(e){
-            //     e.preventDefault();
-
-            //     var bloodtype = $("#bloodtype").val();
-            //     var city = $("#city").val();
-            //     if(bloodtype || city)
-            //     {
-            //         $.ajax({
-            //             url : '{{url('api/v1/cities?governorate_id=')}}'+governorate_id,
-            //             type: 'GET',
-            //             success: function (data) {
-                     
-            //                 if(data.status != 0)
-            //                 {
-            //                     $("#cities").empty();
-            //                     $("#cities").append('<option>إختر المدينة </option>');
-            //                     $.each(data.data, function(index, value){
-            //                         $("#cities").append('<option value="'+value.id+'">'+value.name+'</option>');
-            //                     });
-            //                 } else {
-            //                     $("#cities").empty();
-            //                 }
-            //             },
-            //             error : function(jqxhr, textStatus, errorMessage) {
-            //                 alert(errorMessage);
-            //             }
-            //         });
-            //     } else {
-
-            //     }
-            // });
-
-
-
             function toggleFavourite(heart) { 
                 var post_id = heart.id;
                 $.ajax({
-                    url : '{{url('toggle-favourite')}}',
+                    url : '{{url(route('toggle-favourite'))}}',
                     type: 'post',
                     data: {_token:"{{csrf_token()}}", post_id:post_id},
-                    success: finction (data) {
+                    success: function (data) {
                         console.log(data);
+                        var currentClass = $(heart).attr('class');
+                        if(currentClass.includes('first')){
+                            $(heart).removeClass('first-heart').addClass('second-heart');
+                        }else {
+                            $(heart).removeClass('second-heart').addClass('first-heart');
+                        }
                     }
-
                 });
-                var currentClass = $(heart).attr('class');
-                if(currentClass.includes('first')){
-                    $(heart).remveClass('first-heart').addClass('second-heart');
-                }else {
-                    $(heart).remveClass('second-heart').addClass('first-heart');
-                }
+               
             }
         </script>
 

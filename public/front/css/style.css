@@ -544,7 +544,6 @@ p{
 
 
                     /*--------------------------------home page--------------------------------------*/
-
 /*intro*/
 .intro{
     background-color: #DDD;
@@ -712,6 +711,14 @@ p{
     top: 6px;
     left: 6px;
     z-index: 5;
+}
+
+.articles .view .articles-carousel .card  .first-heart {
+    color: #14171c;
+}
+
+.articles .view .articles-carousel .card  .second-heart {
+    color: #ff0000;
 }
 
 .articles .view .articles-carousel .card .photo img{

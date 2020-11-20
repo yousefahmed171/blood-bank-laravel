@@ -8,7 +8,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">الرئيسية</a></li>
-                        <li class="breadcrumb-item"><a href="donation-requests.html">طلبات التبرع</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('donation-requests')}}">طلبات التبرع</a></li>
                         <li class="breadcrumb-item active" aria-current="page">طلب التبرع: {{$donation->name}} {{$donation->id}}</li>
                     </ol>
                 </nav>
