@@ -35,6 +35,17 @@ Email user `yousef@gmmail.com` password (123)  :
 
 Email admin `admin@gmmail.com` password (123)  :
 
+## Packages Use
+
+Laratrust
+```shell
+https://github.com/icweb/laratrust-ui
+```
+Laravel Collective
+```shell
+https://laravelcollective.com/
+```
+
 ## License
 
 blood bank is free web site student .
