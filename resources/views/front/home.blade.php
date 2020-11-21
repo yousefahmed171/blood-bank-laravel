@@ -144,7 +144,7 @@
                             @endforeach
                         @else
                             <div class="alert alert-danger" role="alert">
-                                 نأسف لايوجد تبرعات لصيغه البحث حاول مرة آخرى 
+                                 نأسف لايوجد تبرعات  حاول مرة آخرى 
                             </div>
                             @foreach ($donations as $donation)
                             <div class="details">
@@ -179,9 +179,9 @@
                     </div>
                     <p class="text">يمكنك الإتصال بنا للإستفسار عن معلومة وسيتم الرد عليكم</p>
                     <div class="row whatsapp">
-                        <a href="#">
+                        <a href="{{$settings->whatsapp_link}}" target="_blank">
                             <img src="{{asset('images/front/whats.png')}}">
-                            <p dir="ltr">+002  1215454551</p>
+                            <p dir="ltr">+002  1010737793</p>
                         </a>
                     </div>
                 </div>
@@ -201,12 +201,12 @@
                             <h4>متوفر على</h4>
                             <div class="row stores">
                                 <div class="col-sm-6">
-                                    <a href="#">
+                                    <a href="{{$settings->android_link}}" target="_blank">
                                         <img src="{{asset('images/front/google.png')}}">
                                     </a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a href="#">
+                                    <a href="{{$settings->ios_link}}" target="_blank">
                                         <img src="{{asset('images/front/ios.png')}}">
                                     </a>
                                 </div>

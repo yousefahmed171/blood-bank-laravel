@@ -39,11 +39,11 @@
                             <div class="col-md-4">
                                 <div class="social">
                                     <div class="icons">
-                                        <a href="{{$settings->fs_link}}" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="{{$settings->ins_link}}" class="instagram"><i class="fab fa-instagram"></i></a>
-                                        <a href="{{$settings->tw_link}}" class="twitter"><i class="fab fa-twitter"></i></a>
-                                        <a href="{{$settings->yt_link}}" class="youtube"><i class="fab fa-youtube"></i></a>
-                                        {{-- <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a> --}}
+                                        <a href="{{$settings->facebook_link}}" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="{{$settings->instagram_link}}" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                        <a href="{{$settings->twitter_link}}" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                                        <a href="{{$settings->youtube_link}}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                                        <a href="{{$settings->whatsapp_link}}" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -89,10 +89,10 @@
                                                 <i class="far fa-heart"></i>
                                                 المفضلة
                                             </a>
-                                            <a class="dropdown-item" href="{{url('/')}}">
+                                            {{-- <a class="dropdown-item" href="{{url('/')}}">
                                                 <i class="far fa-comments"></i>
                                                 ابلاغ
-                                            </a>
+                                            </a> --}}
                                             <a class="dropdown-item" href="{{url('contact')}}">
                                                 <i class="fas fa-phone-alt"></i>
                                                 تواصل معنا

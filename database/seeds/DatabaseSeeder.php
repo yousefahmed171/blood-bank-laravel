@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 
 class DatabaseSeeder extends Seeder
@@ -21,7 +20,11 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             PostSeeder::class,
             SettingSeeder::class,
-            ClientSedder::class
+            ClientSedder::class,
+            PermissionsSeeder::class,
+            RolesSeeder::class,
+            UsersSeeder::class,
+
             
         ]);
          

@@ -15,36 +15,52 @@
     
     @include('admin.partials.validate_errors')
 
-    <label for="exampleInputSettings">About App </label>
+    <label for="about_app">About App </label>
     {!! Form::text('about_app', null,[
       'class'       => 'form-control'
     ])!!}
-    <label for="exampleInputSettings">Notification Setting Post </label>
+    <label for="about">About  </label>
+    {!! Form::text('about', null,[
+      'class'       => 'form-control'
+    ])!!}
+    <label for="notification_setting_post">Notification Setting Post </label>
     {!! Form::textarea('notification_setting_post', null,[
         'class'       => 'form-control'
     ])!!}
-    <label for="exampleInputSettings">Phone </label>
+    <label for="phone">Phone </label>
     {!! Form::text('phone', null,[
         'class'       => 'form-control'
     ])!!}
-    <label for="exampleInputSettings">Email </label>
+    <label for="email">Email </label>
     {!! Form::text('email', null,[
         'class'       => 'form-control'
     ])!!}
-    <label for="exampleInputSettings">Facebook Link </label>
-    {!! Form::text('fs_link', null,[
+    <label for="facebook_link">Facebook Link </label>
+    {!! Form::text('facebook_link', null,[
         'class'       => 'form-control'
     ])!!}
-    <label for="exampleInputSettings">Twitter Link </label>
-    {!! Form::text('tw_link', null,[
+    <label for="twitter_link">Twitter Link </label>
+    {!! Form::text('twitter_link', null,[
         'class'       => 'form-control'
     ])!!}
-    <label for="exampleInputSettings">Youtupe Link </label>
-    {!! Form::text('yt_link', null,[
+    <label for="youtube_link">Youtupe Link </label>
+    {!! Form::text('youtube_link', null,[
         'class'       => 'form-control'
     ])!!}
-    <label for="exampleInputSettings">Instagram Link </label>
-    {!! Form::text('ins_link', null,[
+    <label for="instagram_link">Instagram Link </label>
+    {!! Form::text('instagram_link', null,[
+        'class'       => 'form-control'
+    ])!!}
+    <label for="whatsapp_link">Whatsapp Link </label>
+    {!! Form::text('whatsapp_link', null,[
+        'class'       => 'form-control'
+    ])!!}
+    <label for="android_link">Android Link </label>
+    {!! Form::text('android_link', null,[
+        'class'       => 'form-control'
+    ])!!}
+    <label for="ios_link">Ios Link </label>
+    {!! Form::text('ios_link', null,[
         'class'       => 'form-control'
     ])!!}
   </div>

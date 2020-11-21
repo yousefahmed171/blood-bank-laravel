@@ -22,10 +22,10 @@
                         <div class="stores col-md-4">
                             <div class="availabe">
                                 <p>متوفر على</p>
-                                <a href="{{$settings->fs_link}}">
+                                <a href="{{$settings->android_link}}" target="_blank">
                                     <img src="{{asset('images/front/google1.png')}}">
                                 </a>
-                                <a href="{{$settings->fs_link}}">
+                                <a href="{{$settings->ios_link}}" target="_blank">
                                     <img src="{{asset('images/front/ios1.png')}}">
                                 </a>
                             </div>
@@ -38,10 +38,11 @@
                     <div class="row">
                         <div class="social col-md-4">
                             <div class="icons">
-                                <a href="{{$settings->fs_link}}" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a href="{{$settings->ins_link}}" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                                <a href="{{$settings->tw_link}}" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                                <a href="{{$settings->yt_link}}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                                <a href="{{$settings->facebook_link}}" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="{{$settings->instagram_link}}" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="{{$settings->twitter_link}}" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                                <a href="{{$settings->youtube_link}}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                                <a href="{{$settings->whatsapp_link}}" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
                         <div class="rights col-md-8">
