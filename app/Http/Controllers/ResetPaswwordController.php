@@ -17,19 +17,14 @@ class ResetPaswwordController extends Controller
 
     public function update(Request $request, $id)
     {
-
-
         $this->validate($request, [
             'password'              => 'required|confirmed'
-
         ]);
         $user = User::findOrFail($id);
         $request->merge(['password' => bcrypt($request->password)]);
         $user->update($request->all());
         flash('Success Update Password')->success();
         return back();
-        
- 
     }
 
 }

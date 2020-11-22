@@ -25,6 +25,7 @@
                   <th>Id </th>
                   <th>Name</th>
                   <th>Role</th>
+                  <th>Email</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
@@ -39,6 +40,7 @@
                           <span class="badge badge-success">{{$role->display_name}} </span>
                       @endforeach
                     </td>
+                    <td>{{$user->email}}</td>
                     <td>
                         <a href="{{route('user.edit', $user->id)}}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
                     </td>
@@ -58,6 +60,7 @@
                   <th>Id </th>
                   <th>Name</th>
                   <th>Role</th>
+                  <th>Email</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>

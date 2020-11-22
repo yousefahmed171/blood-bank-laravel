@@ -47,9 +47,9 @@ class UserController extends Controller
 
         $this->validate($request, [
             'name'      => 'required',
-            'password'  => 'required|confirmed',
-            'email'     =>  'email',
-            'user_type' =>  'required'
+            'password'  => 'required|confirmed|min:3',
+            'email'     => 'required|email|string|max:255|unique:users',
+            'user_type' => 'required'
 
         ]);
 
@@ -100,18 +100,28 @@ class UserController extends Controller
 
         $this->validate($request, [
             'name'      => 'required',
-            'password'  => 'confirmed',
-            'email'     => 'email',
+            'password'  => 'sometimes|confirmed|min:3',
+            'email'     => 'required|email|string|max:255|unique:users,email,'.$id,
             'user_type' => 'required'
 
         ]);
+
         $user = User::findOrFail($id);
+
+        $request->merge([]);
+
         $user->roles()->sync((array) $request->input('user_type'));
-        $request->merge(['password' => bcrypt($request->password)]);
+ 
         $user->update($request->all());
 
-        return redirect('admin/user');
+        if($request->has('password'))
+        {
+            $user->password = bcrypt($request->password);
+        }
 
+        $user->save();
+        
+        return redirect('admin/user');
     }
 
     /**
@@ -122,7 +132,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
 
         $record = User::findOrFail($id);
         $record->delete();

@@ -52,7 +52,6 @@ use Illuminate\Support\Facades\Route;
     // Admin Group
     Route::group(['middleware' => ['auth', 'auto-check-permission'], 'prefix'=>'admin'], function(){
         
-        Route::get('/admin', 'HomeController@admin')->name('home');
         Route::get('home', 'HomeController@index')->name('home');
         Route::resource('governorate', 'GovernorateController'); 
         Route::resource('post', 'PostController');

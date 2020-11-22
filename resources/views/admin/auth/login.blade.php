@@ -81,7 +81,7 @@
             @endif --}}
        
             <p class="mb-0">
-              <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+              <a href="{{ url('admin/register') }}" class="text-center">Register a new membership</a>
             </p>
           </div>
           <!-- /.login-card-body -->

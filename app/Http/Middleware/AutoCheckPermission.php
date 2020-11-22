@@ -17,16 +17,16 @@ class AutoCheckPermission
     public function handle($request, Closure $next)
     {
 
-        $routeName = $request->route()->getName(); // user.create
-        $permission = Permission::whereRaw("FIND_IN_SET ('$routeName', routes)")->first();
-        if($permission)
-        {
-            if(!$request->user()->isAbleTo($permission->name))
-            {
-                abort(403);
-            }
+        // $routeName = $request->route()->getName(); // user.create
+        // $permission = Permission::whereRaw("FIND_IN_SET ('$routeName', routes)")->first();
+        // if($permission)
+        // {
+        //     if(!$request->user()->isAbleTo($permission->name))
+        //     {
+        //         abort(403);
+        //     }
 
-        }
+        // }
         return $next($request);
     }
 }

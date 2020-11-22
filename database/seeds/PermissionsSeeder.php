@@ -17,7 +17,7 @@ class PermissionsSeeder extends Seeder
             'name'              => 'users-list',
             'display_name'      => 'عرض المستخدمين',
             'description'       => 'صلاحية عرض المستخدمين ',
-            'routes'            => 'user-index'
+            'routes'            => 'user.index'
         ]);
         
         DB::table('permissions')->insert([
@@ -25,7 +25,7 @@ class PermissionsSeeder extends Seeder
             'name'              => 'users-create',
             'display_name'      => ' إنشاء المستخدمين',
             'description'       => 'صلاحية إنشاء المستخدمين',
-            'routes'            => 'user-create,user-store'
+            'routes'            => 'user.create,user.store'
         ]);
 
         DB::table('permissions')->insert([
@@ -33,7 +33,7 @@ class PermissionsSeeder extends Seeder
             'name'              => 'users-edit',
             'display_name'      => ' تعديل المستخدمين',
             'description'       => 'صلاحية تعديل المستخدمين',
-            'routes'            => 'user-edit,user-update'
+            'routes'            => 'user.edit,user.update'
         ]);
 
         DB::table('permissions')->insert([
@@ -41,7 +41,7 @@ class PermissionsSeeder extends Seeder
             'name'              => 'users-delete',
             'display_name'      => ' حذف المستخدمين',
             'description'       => 'صلاحية حذف المستخدمين',
-            'routes'            => 'user-destroy'
+            'routes'            => 'user.destroy'
         ]);
     }
 }
